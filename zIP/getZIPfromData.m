@@ -73,7 +73,7 @@ if nargin > 1 && isfield(params,'method')
     method = params.method;
 end
 
-if strcmp('method','bpf') || strcmp('method','cpsd2bpf')
+if strcmp(method,'bpf') || strcmp(method,'cpsd2bpf')
     window_size = length(data_cell{1}.COP);   % Use full data length
 elseif nargin > 1 && isfield(params,'window_size')
     window_size = params.window_size;
