@@ -112,6 +112,7 @@ end
 x_i = x_0; % initialize state
 
 % Generate LQR controller gain
+K = [];
 [~,~,K] = LQR_Controller(t_0, x_0, controller_params);
 
 for i = 1:N
