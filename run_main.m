@@ -11,6 +11,6 @@ run setup
 
 %% Run simulations and compute zIP to generate figures from paper:
 
-run generate_Fig4
-run generate_Fig5  %<< May take some time running simulations
+run generate_Fig5
+run generate_Fig6  %<< May take some time running simulations
 run generate_FigC1
