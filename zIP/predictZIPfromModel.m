@@ -30,6 +30,7 @@ function [f, zIP_ratio, H] = predictZIPfromModel(input_struct)
 %
 % Rika Sugimoto-Dimitrova (rikasd@mit.edu)
 % 2024-02-06
+% Last updated: 2024-06-18
 
 %% Load params
 
@@ -80,7 +81,7 @@ for i = 1:length(w)
     Gcpsd_frf(:,:,i) = HC_frf(:,:,i)*HT_frf(:,:,i);
     [V,D] = eig(real(Gcpsd_frf(:,:,i)));
     [~,i_max] = max(diag(abs(D)));
-    zIP_ratio(i) = V(1,i_max)/V(2,i_max) / lumped_params.L_COM;
+    zIP_ratio(i) = V(2,i_max)/V(1,i_max) / lumped_params.L_COM;
 end
 
 end

@@ -26,6 +26,7 @@ function [A_cl,B_cl,C_cl,D_cl] = getModel_linDIP(lumped_params,controller_params
 % Rika Sugimoto Dimitrova
 % 2024-02-10
 % Reference: Shiozawa et al. 2021, Appendices 2-4
+% Last updated: 2024-06-18
 
 m1 = lumped_params.m1;
 m2 = lumped_params.m2;
@@ -38,14 +39,14 @@ q_eq = [0;0]; Dq_eq = [0;0];
 A_ol = [zeros(2) eye(2); -M\J_G zeros(2)];
 B_ol = [zeros(2); M\eye(2)];
 
-C_1 = [0 0 0 0];
-D_1 = [1 0];
+C_2 = [0 0 0 0];
+D_2 = [1 0];
 
 J_CoM_x = J_CoM(1,:);
 DJ_CoM_x = DJ_CoM(1,:);
 J_2 = -(m1+m2)*[DJ_CoM_x J_CoM_x];
-C_2 = J_2*A_ol;
-D_2 = J_2*B_ol;
+C_1 = J_2*A_ol;
+D_1 = J_2*B_ol;
 C_ol = [C_1; C_2];
 D_ol = [D_1; D_2];
 

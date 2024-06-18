@@ -37,7 +37,7 @@ function [f_zIP, zIP_ratio] = getZIPfromData(data,params)
 %
 % Rika Sugimoto Dimitrova
 % 2024-02-06
-% Last updated: 2024-02-16
+% Last updated: 2024-06-18
 
 % CPSD detrend settings
 iRAW = 1;
@@ -120,7 +120,7 @@ switch method
             Fz = data_cell{iTrial}.FootForce(iZ,:); % vertical ground reaction force
             theta = -Fx./Fz;
         
-            y = [detrend(COP,1)' detrend(theta,1)']; 
+            y = [detrend(theta,1)' detrend(COP,1)']; 
             
             [Gyy_temp, f_zIP] = ...
                 cpsd_custom(y,y,windowtaper,noverlap,nfft,'mimo',Fs_Hz,...
@@ -140,7 +140,7 @@ switch method
             Gyy(2,2) = mean(Gyy22(i,:),2);
             [V,D] = eig(real(Gyy(:,:)));
             [~,i_max] = max(diag(abs(D)));
-            zIP_ratio(i) = V(1,i_max)/V(2,i_max) / mean(COM_z);
+            zIP_ratio(i) = V(2,i_max)/V(1,i_max) / mean(COM_z);
         end
 
     case 'cpsd2bpf'
@@ -152,7 +152,7 @@ switch method
             Fz = data_cell{iTrial}.FootForce(iZ,:);
             theta_F = -Fx./Fz;
 
-            y = [detrend(COP_x,1)' detrend(theta_F,1)'];
+            y = [detrend(theta_F,1)' detrend(COP_x,1)'];
 
             [Gyy, f_cpsd] = ...
                 cpsd_custom(y,y,windowtaper,noverlap,nfft,'mimo',Fs_Hz,...
@@ -180,7 +180,7 @@ switch method
             Coyy_smeared(2,2) = mean(Coyy_smeared22(i,:),2);
             [V,D] = eig(real(Coyy_smeared(:,:)));
             [~,i_max] = max(diag(abs(D)));
-            zIP_ratio(i) = V(1,i_max)/V(2,i_max) / mean(COM_z);
+            zIP_ratio(i) = V(2,i_max)/V(1,i_max) / mean(COM_z);
         end % i
 
         f_zIP = f_bpf + f_int/2;
@@ -219,8 +219,8 @@ switch method
                 COP_f_allTrials = [COP_f_allTrials; squeeze(COP_f(f,iTrial,:))];
                 theta_f_allTrials = [theta_f_allTrials; squeeze(theta_f(f,iTrial,:))];
             end % iTrials
-            coeff = pca([COP_f_allTrials theta_f_allTrials]);
-            zIP(f) = coeff(1,1)/coeff(2,1);           
+            coeff = pca([theta_f_allTrials COP_f_allTrials]);
+            zIP(f) = coeff(2,1)/coeff(1,1);           
         end % f
 
         zIP_ratio = zIP/mean(COM_z_allTrials);
