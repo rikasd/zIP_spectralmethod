@@ -4,7 +4,7 @@
 1. Download the public data set from Santos and Duarte (2016) and add it to the "Santos2016Data" folder.
 2. Ensure that you have MATLAB R2022a or later installed, along with the following toolboxes:
     > Control System Toolbox, Signal Processing Toolbox, Statistics and Machine Learning Toolbox.
-3. Navigate to the zIP_spectralmethod folder in MATLAB and run run_main.m to generate figures from Sugimoto-Dimitrova et al. (2024)
+3. Navigate to the zIP_spectralmethod folder in MATLAB and run run_main.m to generate figures from Sugimoto-Dimitrova et al. (2024).
 
 
 ## Organization of the repository:
