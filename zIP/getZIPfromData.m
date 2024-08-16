@@ -115,12 +115,19 @@ switch method
 
         for iTrial = 1:length(data_cell)
             COM_z = data_cell{iTrial}.COM(iZ,:);    % vertical CoM
-            COP = data_cell{iTrial}.COP;            % 1D CoP
+            COP_x = data_cell{iTrial}.COP(iX,:);      % 1D CoP
             Fx = data_cell{iTrial}.FootForce(iX,:); % horizontal ground reaction force
             Fz = data_cell{iTrial}.FootForce(iZ,:); % vertical ground reaction force
-            theta = -Fx./Fz;
+            theta_F = -Fx./Fz;
         
-            y = [detrend(theta,1)' detrend(COP,1)']; 
+            switch detrend_option
+                case iRAW
+                    y = [theta_F' COP_x']; 
+                case iZEROMEAN
+                    y = [detrend(theta_F,0)' detrend(COP_x,0)']; 
+                case iDETREND
+                    y = [detrend(theta_F,1)' detrend(COP_x,1)']; 
+            end 
             
             [Gyy_temp, f_zIP] = ...
                 cpsd_custom(y,y,windowtaper,noverlap,nfft,'mimo',Fs_Hz,...
@@ -152,7 +159,14 @@ switch method
             Fz = data_cell{iTrial}.FootForce(iZ,:);
             theta_F = -Fx./Fz;
 
-            y = [detrend(theta_F,1)' detrend(COP_x,1)'];
+            switch detrend_option
+                case iRAW
+                    y = [theta_F' COP_x']; 
+                case iZEROMEAN
+                    y = [detrend(theta_F,0)' detrend(COP_x,0)']; 
+                case iDETREND
+                    y = [detrend(theta_F,1)' detrend(COP_x,1)']; 
+            end 
 
             [Gyy, f_cpsd] = ...
                 cpsd_custom(y,y,windowtaper,noverlap,nfft,'mimo',Fs_Hz,...
