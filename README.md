@@ -1,4 +1,4 @@
-# Supplementary material for Sugimoto-Dimitrova et al. (2024)
+# Supplementary material for ["Frequency-domain patterns in foot-force line-of-action: an emergent property of standing balance control"](https://doi.org/10.1152/jn.00084.2024)
 
 ## Quick Start Guide:
 1. Download the public data set from Santos and Duarte (2016) and add it to the "Santos2016Data" folder.
