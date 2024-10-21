@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Sugimoto-Dimitrova
+    given-names: Rika
+    orcid: https://orcid.org/0000-0001-7055-0196
+title: "Supplementary material for Sugimoto-Dimitrova et al. (2024)"
+date-released: 2024-02-25
+repository-code: "https://github.com/rikasd/zIP_spectralmethod"
