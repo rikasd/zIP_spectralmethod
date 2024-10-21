@@ -28,4 +28,4 @@ Santos, D. A., Duarte, M. (2016). A public data set of human balance evaluations
 
 Shiozawa, K., Lee, J., Russo, M. et al. (2021). Frequency-dependent force direction elucidates neural control of balance. J NeuroEngineering Rehabil 18, 145. https://doi.org/10.1186/s12984-021-00907-2
 
-Sugimoto-Dimitrova, R., Shiozawa, K., Gruben, K. G., Hogan, N. (2024). Frequency-domain patterns in foot-force line-of-action: an emergent property of standing balance control. Submitted to Journal of Neurophysiology.
+Sugimoto-Dimitrova, R., Shiozawa, K., Gruben, K. G., & Hogan, N. (2024). Frequency-domain patterns in foot-force line-of-action: an emergent property of standing balance control. Journal of Neurophysiology. https://doi.org/10.1152/jn.00084.2024
