@@ -22,6 +22,9 @@ function [M,C,G] = getDynamics_nonlinDIP(lumped_params,q,Dq)
 % Rika Sugimoto Dimitrova
 % 2024-02-10
 % Reference: Shiozawa et al. 2021, Appendices 2-4
+%
+% Modified: 
+% 2025-03-21: Fixed sign of first row of elements in C
 
 g = 9.81;
 
@@ -37,7 +40,7 @@ M = [(j1+m1*c1^2)+(j2+m2*c2^2)+m2*(L1^2+2*L1*c2*cos(q(2))), ...
      (j2+m2*c2^2)+m2*L1*c2*cos(q(2));...
      (j2+m2*c2^2)+m2*L1*c2*cos(q(2)),...
      (j2+m2*c2^2)];
-C = m2*L1*c2*sin(q(2))*[2*Dq(2), Dq(2); Dq(1), 0];
+C = m2*L1*c2*sin(q(2))*[-2*Dq(2), -Dq(2); Dq(1), 0];
 G = -g*[m1*c1*sin(q(1))+m2*(L1*sin(q(1))+c2*sin(q(1)+q(2)));...
         m2*c2*sin(q(1)+q(2))];
 
