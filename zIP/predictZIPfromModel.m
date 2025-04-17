@@ -16,6 +16,7 @@ function [f, zIP_ratio, H] = predictZIPfromModel(input_struct)
 %     'j1' : moment of inertia of link 1 about its center of mass
 %     'j2' : moment of inertia of link 2 about its center of mass
 %     'L1' : length of link 1
+%     'L_COM': height of net center of mass 
 %   'controller_params' : struct of LQR cost function weighting matrices
 %     'Q'  : 4x4 state penalty matrix, default ones(4)
 %     'R'  : 2x2 control-input penalty matrix, default 1e6*[0.3 0; 0 1/0.3]
